@@ -5,7 +5,7 @@
 
     <groupId>io.github.lwq497539389</groupId>
     <artifactId>changelog-maven-plugin</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>changelog-maven-plugin Maven Plugin</name>
