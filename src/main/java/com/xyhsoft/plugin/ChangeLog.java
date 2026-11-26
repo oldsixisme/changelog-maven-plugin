@@ -159,7 +159,7 @@ public class ChangeLog extends AbstractMojo {
                 List<ChangeSet> changeSetsList =log.getChangeSets();
                 for(ChangeSet set:changeSetsList){
                     String commentString =set.getComment();
-                    results.add(commentString.replace("\n", "")+"["+set.getAuthor()+"]");
+                    results.add(commentString.replace("\n", "")+"["+set.getAuthor().replaceAll("<[^>]*>", "").trim()+"]");
                 }
             }
 
