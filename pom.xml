@@ -3,14 +3,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.lwq497539389</groupId>
+    <groupId>io.github.oldsixisme</groupId>
     <artifactId>changelog-maven-plugin</artifactId>
     <version>1.3.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>changelog-maven-plugin Maven Plugin</name>
 
+    <description>A Maven plugin that generates change logs from SCM commit history.</description>
+
     <url>https://github.com/lwq497539389/changelog-maven-plugin</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>oldsixisme</id>
+            <name>oldsixisme</name>
+            <url>https://github.com/oldsixisme</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/lwq497539389/changelog-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:lwq497539389/changelog-maven-plugin.git</developerConnection>
+        <url>https://github.com/lwq497539389/changelog-maven-plugin</url>
+    </scm>
 
     <properties>
         <mavenVersion>3.8.2</mavenVersion>
@@ -225,6 +249,48 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <doclint>none</doclint>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.12.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
             </plugin>
         </plugins>
     </build>
